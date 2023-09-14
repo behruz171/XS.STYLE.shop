@@ -1,10 +1,9 @@
 import './App.css';
-import Card from './companent/card';
-
+import Home from './companent/home';
 function App() {
   return (
     <div className="App">
-      <Card/>
+      <Home/>
     </div>
   );
 }

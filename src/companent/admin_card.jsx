@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { LoginSocialGoogle } from 'reactjs-social-login'
-import {GoogleLoginButton} from 'react-social-login-buttons'
+import { LoginSocialGoogle } from 'reactjs-social-login';
+import { GoogleLoginButton } from 'react-social-login-buttons'
 
-const Card = () => {
+const Admincard = () => {
     const [mas, setMas] = useState([])
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
@@ -47,21 +47,6 @@ const Card = () => {
             <input onInput={(e) => setPrice(Number(e.target.value))} type="number" placeholder='Narxi' />
             <input onInput={(e) => setImg(e.target.value)} type="text" placeholder='Img' />
             <button onClick={() => bos()}>+Add</button>
-            <LoginSocialGoogle
-                client_id={"195821229692-gvlfn1hqlol7humtcgrls6agid4ucc7l.apps.googleusercontent.com"}
-                scope="openid profile email"
-                discoveryDocs="claims_supported"
-                access_type="offline"
-                onResolve={({ provider, data }) => {
-                    console.log(data);
-                }}
-
-                onReject={(err) => {
-                    console.log(err);
-                }}
-            >
-                <GoogleLoginButton></GoogleLoginButton>
-            </LoginSocialGoogle>
             {
                 mas.map((item, index) => {
                     return (
@@ -79,6 +64,6 @@ const Card = () => {
     );
 }
 
-export default Card;
-
+export default Admincard;
+// 195821229692-gvlfn1hqlol7humtcgrls6agid4ucc7l.apps.googleusercontent.com
 // https://api.npoint.io/9197a40bf34fc9e4361d
