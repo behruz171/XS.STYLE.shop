@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { LoginSocialGoogle } from 'reactjs-social-login';
-import { GoogleLoginButton } from 'react-social-login-buttons'
 
 const Admincard = () => {
     const [mas, setMas] = useState([])
