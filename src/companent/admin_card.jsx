@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { LoginSocialGoogle } from 'reactjs-social-login';
+import { AiFillHeart } from 'react-icons/ai'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const Admincard = () => {
     const [mas, setMas] = useState([])
@@ -42,23 +44,44 @@ const Admincard = () => {
     }
     return (
         <div>
-            <input onInput={(e) => setName(e.target.value)} type="text" placeholder='Name' />
-            <input onInput={(e) => setPrice(Number(e.target.value))} type="number" placeholder='Narxi' />
-            <input onInput={(e) => setImg(e.target.value)} type="text" placeholder='Img' />
-            <button onClick={() => bos()}>+Add</button>
-            {
-                mas.map((item, index) => {
-                    return (
-                        <div className='card'>
-                            <img src={item.img} alt="" />
-                            <h2>{item.name}</h2>
-                            <h2>{item.price} $</h2>
-                            <h2>| {item.id} |</h2>
-                            <button onClick={() => bos2(item.id)}>deleta</button>
-                        </div>
-                    )
-                })
-            }
+            <div className='add_head'>
+                <input onInput={(e) => setName(e.target.value)} type="text" placeholder='Name' />
+                <input onInput={(e) => setPrice(Number(e.target.value))} type="number" placeholder='Narxi' />
+                <input onInput={(e) => setImg(e.target.value)} type="text" placeholder='Img' />
+                <button onClick={() => bos()}>+Add</button>
+            </div>
+            <div className='container'>
+                {
+                    mas.map((item, index) => {
+                        return (
+                            <div className='card'>
+                                <div className="imgBx">
+                                    <img src={item.img} alt="" />
+                                    <ul className='action'>
+                                        <li>
+                                            <AiFillHeart />
+                                            <span>Add to Wishlist</span>
+                                        </li>
+                                        <li>
+                                            <AiOutlineShoppingCart />
+                                            <span>Add to Card</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="content">
+                                    <div className="productName">
+                                        <h3>{item.name}</h3>
+                                    </div>
+                                    <div className="price_rating">
+                                        <h3>${item.price}</h3>
+                                    </div>
+                                    <button className='del_btn' onClick={() => bos2(item.id)}>delete</button>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     );
 }

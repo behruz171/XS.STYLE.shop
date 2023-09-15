@@ -9,19 +9,19 @@ const Home = () => {
     return (
         <div>
             <LoginSocialGoogle
-                className='nimadir'
+            className='sign_in'
                 client_id={"195821229692-gvlfn1hqlol7humtcgrls6agid4ucc7l.apps.googleusercontent.com"}
                 access_type="offline"
                 onResolve={({ provider, data }) => {
                     console.log(data);
                     setData(data)
-                    document.querySelector('.nimadir').style.display = 'none'
+                    document.querySelector('.sign_in').style.display = 'none'
                 }}
                 onReject={(err) => {
                     console.log(err);
                 }}
             >
-                <button>bos</button>
+                <button>Sign in with Google</button>
             </LoginSocialGoogle>
             {(data.sub == '103929406225523855212') ?
                 <Admincard /> : <UserCard />
