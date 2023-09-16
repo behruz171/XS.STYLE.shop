@@ -2,21 +2,122 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: monospace;
 }
 
+nav{
+    /* position: fixed; */
+    background: #0082e6;
+    height: 80px;
+    width: 100%;
+    z-index: 10;
+}
+
+label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+
+nav .navbar{
+    float: right;
+    margin-right: 20px;
+}
+
+nav .navbar li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav .navbar li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+nav .navbar li img{
+    position: relative;
+    top: 10px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+nav .navbar li a.active ,nav .navbar li a:hover{
+    background: #1b9bff;
+    transition: .5s;
+}
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+
+@media (max-width:952px) {
+    label.logo{
+        font-size: 30px;
+        padding-left: -50px;
+    }
+    nav .navbar li a{
+        font-size: 16px;
+    }
+}
+@media (max-width:858px) {
+    .checkbtn{
+        display: block;
+    }
+    .navbar{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: transparent;
+        backdrop-filter: blur(10px);
+        /* top: 80px; */
+        left: -100%;
+        text-align: center;
+        z-index: 10;
+        transition: all .5s;
+    }
+    nav .navbar li{
+        display: block;
+    }
+    nav .navbar li a {
+        font-size: 20px;
+        color: black;
+    }
+    nav .navbar li a:hover,nav .navbar li a.active{
+        background: none;
+        color: #0082e6;
+    }
+    #check:checked ~ ul{
+        left: 0;
+    }
+}
 .container {
     position: relative;
     width: 1200px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 20px;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .container .card {
@@ -161,16 +262,55 @@ body {
     border: none;
     font-size: 12px;
     padding: 0 5px;
+    cursor: pointer;
+    transition: .8s;
+}
+.del_btn:hover{
+    transform: scale(0.9);
 }
 
 .add_head{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    width: 100%;
 }
 
+.add_head input{
+    width: 250px;
+    height: 30px;
+    margin: 5px 0;
+    text-align: center;
+    border-radius: 12px;
+    border: 2px solid #0082e6;
+    font-size: 15px;
+}
+.add_head button{
+    width: 250px;
+    height: 30px;
+    border-radius: 12px;
+    border: 2px solid #0082e6;
+    background: #fff;
+    transition: .5s;
+}
+.add_head button:hover{
+    background: #0082e6;
+    color: white;
+}
 .sign_in{
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+}
+.sign_in button{
+    width: 100%;
+    height: 30px;
+    border-radius:5px;
+    border: 1px solid #0082e6;
+    font-size: 17px;
+    background: #fff;
+    transition: .5s;
+}
+.sign_in button:hover{
+    background: #0082e6;
+    color: #fff;
 }

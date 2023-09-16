@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { LoginSocialGoogle } from 'reactjs-social-login';
 import { AiFillHeart } from 'react-icons/ai'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
-
+import { BiMenu } from 'react-icons/bi'
 const Admincard = () => {
     const [mas, setMas] = useState([])
     const [name, setName] = useState('')
@@ -42,8 +42,33 @@ const Admincard = () => {
                 setMas(ress.data)
             })
     }
+    function log_out(){
+        localStorage.setItem('data', '')
+        window.location.reload()
+    }
     return (
         <div>
+            <nav>
+                <input type="checkbox" id='check' />
+                <label htmlFor="check" className='checkbtn'>
+                    <BiMenu/>
+                </label>
+                <label className='logo'>XS style</label>
+                <ul className='navbar'>
+                    <li><a className='active' href="#">Home</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li><a href="#">Korzina</a></li>
+                    <li><a href="#">Like</a></li>
+                    {
+                        (JSON.parse(localStorage.getItem('data'))) &&
+                        <span>
+                            <li><img src={JSON.parse(localStorage.getItem('data')).picture} alt=""/></li>
+                            <li><a href="#">{JSON.parse(localStorage.getItem('data')).given_name}</a></li>
+                            <li onClick={()=>log_out()}><a href="#">log out</a></li>
+                        </span>
+                    }
+                </ul>
+            </nav>
             <div className='add_head'>
                 <input onInput={(e) => setName(e.target.value)} type="text" placeholder='Name' />
                 <input onInput={(e) => setPrice(Number(e.target.value))} type="number" placeholder='Narxi' />

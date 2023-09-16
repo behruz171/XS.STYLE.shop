@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { LoginSocialGoogle } from 'reactjs-social-login';
 import { AiFillHeart } from 'react-icons/ai'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { BiMenu } from 'react-icons/bi'
 import '../App.css'
 const UserCard = () => {
     const [mas, setMas] = useState([])
@@ -21,38 +22,65 @@ const UserCard = () => {
                 setMas(ress.data)
             })
     }
+    function log_out(){
+        localStorage.setItem('data', '')
+        window.location.reload()
+    }
     return (
-        <div className='container'>
-            {
-                mas.map((item, index) => {
-                    return (
-                        <div className='card'>
-                            <div className="imgBx">
-                                <img src={item.img} alt="" />
-                                <ul className='action'>
-                                    <li>
-                                        <AiFillHeart />
-                                        <span>Add to Wishlist</span>
-                                    </li>
-                                    <li>
-                                        <AiOutlineShoppingCart />
-                                        <span>Add to Card</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="content">
-                                <div className="productName">
-                                    <h3>{item.name}</h3>
+        <>
+            <nav>
+                <input type="checkbox" id='check' />
+                <label htmlFor="check" className='checkbtn'>
+                    <BiMenu />
+                </label>
+                <label className='logo'>XS style</label>
+                <ul className='navbar'>
+                    <li><a className='active' href="#">Home</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li><a href="#">Korzina</a></li>
+                    <li><a href="#">Like</a></li>
+                    {
+                        (JSON.parse(localStorage.getItem('data'))) &&
+                        <span>
+                            <li><img src={JSON.parse(localStorage.getItem('data')).picture} alt=""/></li>
+                            <li><a href="#">{JSON.parse(localStorage.getItem('data')).given_name}</a></li>
+                            <li onClick={()=>log_out()}><a href="#">log out</a></li>
+                        </span>
+                    }
+                </ul>
+            </nav>
+            <div className='container'>
+                {
+                    mas.map((item, index) => {
+                        return (
+                            <div className='card'>
+                                <div className="imgBx">
+                                    <img src={item.img} alt="" />
+                                    <ul className='action'>
+                                        <li>
+                                            <AiFillHeart />
+                                            <span>Add to Wishlist</span>
+                                        </li>
+                                        <li>
+                                            <AiOutlineShoppingCart />
+                                            <span>Add to Card</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div className="price_rating">
-                                    <h3>${item.price}</h3>
+                                <div className="content">
+                                    <div className="productName">
+                                        <h3>{item.name}</h3>
+                                    </div>
+                                    <div className="price_rating">
+                                        <h3>${item.price}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })
-            }
-        </div>
+                        )
+                    })
+                }
+            </div>
+        </>
     );
 }
 
