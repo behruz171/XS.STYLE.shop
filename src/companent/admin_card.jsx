@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { LoginSocialGoogle } from 'reactjs-social-login';
 import { AiFillHeart } from 'react-icons/ai'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
@@ -41,34 +41,36 @@ const Admincard = () => {
                 setMas(ress.data)
             })
     }
-    function log_out(){
+    function log_out() {
         localStorage.setItem('data', '')
         window.location.reload()
     }
     let valuesDisplays = document.querySelectorAll('.num');
     let interval = 2000
 
-    function priceVal(){
-        valuesDisplays.forEach((valuesDisplay)=>{
+    function priceVal() {
+        valuesDisplays.forEach((valuesDisplay) => {
             let startValue = 0;
             let endValue = parseInt(valuesDisplay.getAttribute("data-val"));
-            let duration = Math.floor(interval/endValue);
-            let counter = setInterval(function(){
+            let duration = Math.floor(interval / endValue);
+            let counter = setInterval(function () {
                 startValue += 1;
-                valuesDisplay.textContent = '$'+ startValue
-                if(startValue == endValue){
+                valuesDisplay.textContent = '$' + startValue
+                if (startValue == endValue) {
                     clearInterval(counter)
                 }
             }, duration);
         });
     }
-    priceVal()
+    setTimeout(function () {
+        priceVal();
+    }, 0);
     return (
         <div>
             <nav>
                 <input type="checkbox" id='check' />
                 <label htmlFor="check" className='checkbtn'>
-                    <BiMenu/>
+                    <BiMenu />
                 </label>
                 <label className='logo'>XS style</label>
                 <ul className='navbar'>
@@ -79,9 +81,9 @@ const Admincard = () => {
                     {
                         (JSON.parse(localStorage.getItem('data'))) &&
                         <span>
-                            <li><img src={JSON.parse(localStorage.getItem('data')).picture} alt=""/></li>
+                            <li><img src={JSON.parse(localStorage.getItem('data')).picture} alt="" /></li>
                             <li><a href="#">{JSON.parse(localStorage.getItem('data')).given_name}</a></li>
-                            <li onClick={()=>log_out()}><a href="#">log out</a></li>
+                            <li onClick={() => log_out()}><a href="#">log out</a></li>
                         </span>
                     }
                 </ul>

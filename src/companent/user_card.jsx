@@ -27,7 +27,7 @@ const UserCard = () => {
         window.location.reload()
     }
     let valuesDisplays = document.querySelectorAll('.num');
-    let interval = 2000
+    let interval = 3000
 
     function priceVal() {
         valuesDisplays.forEach((valuesDisplay) => {
@@ -43,7 +43,10 @@ const UserCard = () => {
             }, duration);
         });
     }
-    priceVal()
+
+    setTimeout(function () {
+        priceVal();
+    }, 0);
     return (
         <>
             <nav>
