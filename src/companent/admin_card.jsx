@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState} from 'react';
 import { LoginSocialGoogle } from 'reactjs-social-login';
 import { AiFillHeart } from 'react-icons/ai'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
@@ -47,18 +47,22 @@ const Admincard = () => {
     }
     let valuesDisplays = document.querySelectorAll('.num');
     let interval = 2000
-    valuesDisplays.forEach((valuesDisplay)=>{
-        let startValue = 0;
-        let endValue = parseInt(valuesDisplay.getAttribute("data-val"));
-        let duration = Math.floor(interval/endValue);
-        let counter = setInterval(function(){
-            startValue += 1;
-            valuesDisplay.textContent = '$'+ startValue
-            if(startValue == endValue){
-                clearInterval(counter)
-            }
-        }, duration);
-    });
+
+    function priceVal(){
+        valuesDisplays.forEach((valuesDisplay)=>{
+            let startValue = 0;
+            let endValue = parseInt(valuesDisplay.getAttribute("data-val"));
+            let duration = Math.floor(interval/endValue);
+            let counter = setInterval(function(){
+                startValue += 1;
+                valuesDisplay.textContent = '$'+ startValue
+                if(startValue == endValue){
+                    clearInterval(counter)
+                }
+            }, duration);
+        });
+    }
+    priceVal()
     return (
         <div>
             <nav>

@@ -22,24 +22,28 @@ const UserCard = () => {
                 setMas(ress.data)
             })
     }
-    function log_out(){
+    function log_out() {
         localStorage.setItem('data', '')
         window.location.reload()
     }
     let valuesDisplays = document.querySelectorAll('.num');
     let interval = 2000
-    valuesDisplays.forEach((valuesDisplay)=>{
-        let startValue = 0;
-        let endValue = parseInt(valuesDisplay.getAttribute("data-val"));
-        let duration = Math.floor(interval/endValue);
-        let counter = setInterval(function(){
-            startValue += 1;
-            valuesDisplay.textContent = '$'+ startValue
-            if(startValue == endValue){
-                clearInterval(counter)
-            }
-        }, duration);
-    });
+
+    function priceVal() {
+        valuesDisplays.forEach((valuesDisplay) => {
+            let startValue = 0;
+            let endValue = parseInt(valuesDisplay.getAttribute("data-val"));
+            let duration = Math.floor(interval / endValue);
+            let counter = setInterval(function () {
+                startValue += 1;
+                valuesDisplay.textContent = '$' + startValue
+                if (startValue == endValue) {
+                    clearInterval(counter)
+                }
+            }, duration);
+        });
+    }
+    priceVal()
     return (
         <>
             <nav>
@@ -56,9 +60,9 @@ const UserCard = () => {
                     {
                         (JSON.parse(localStorage.getItem('data'))) &&
                         <span>
-                            <li><img src={JSON.parse(localStorage.getItem('data')).picture} alt=""/></li>
+                            <li><img src={JSON.parse(localStorage.getItem('data')).picture} alt="" /></li>
                             <li><a href="#">{JSON.parse(localStorage.getItem('data')).given_name}</a></li>
-                            <li onClick={()=>log_out()}><a href="#">log out</a></li>
+                            <li onClick={() => log_out()}><a href="#">log out</a></li>
                         </span>
                     }
                 </ul>
