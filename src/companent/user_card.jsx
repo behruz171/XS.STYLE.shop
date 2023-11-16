@@ -46,7 +46,7 @@ const UserCard = () => {
 
     setTimeout(function () {
         priceVal();
-    }, 0);
+    }, 1);
     return (
         <>
             <nav>
