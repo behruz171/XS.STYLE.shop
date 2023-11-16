@@ -10,7 +10,6 @@ const Admincard = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [img, setImg] = useState('')
-
     useEffect(() => {
         run()
     }, []);

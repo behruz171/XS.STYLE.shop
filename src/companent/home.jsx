@@ -14,7 +14,7 @@ const Home = () => {
             {
                 (localStorage.getItem('data')) ?
                     (JSON.parse(localStorage.getItem('data')).sub == '103929406225523855212') ?
-                        <Admincard /> : <UserCard />
+                       <Admincard /> : <UserCard />
                     :
                     <LoginSocialGoogle
                         className='sign_in'
