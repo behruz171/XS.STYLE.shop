@@ -45,6 +45,20 @@ const Admincard = () => {
         localStorage.setItem('data', '')
         window.location.reload()
     }
+    let valuesDisplays = document.querySelectorAll('.num');
+    let interval = 2000
+    valuesDisplays.forEach((valuesDisplay)=>{
+        let startValue = 0;
+        let endValue = parseInt(valuesDisplay.getAttribute("data-val"));
+        let duration = Math.floor(interval/endValue);
+        let counter = setInterval(function(){
+            startValue += 1;
+            valuesDisplay.textContent = '$'+ startValue
+            if(startValue == endValue){
+                clearInterval(counter)
+            }
+        }, duration);
+    });
     return (
         <div>
             <nav>
@@ -97,7 +111,7 @@ const Admincard = () => {
                                         <h3>{item.name}</h3>
                                     </div>
                                     <div className="price_rating">
-                                        <h3>${item.price}</h3>
+                                        <h3><span className='num' data-val={item.price}>$0</span></h3>
                                     </div>
                                     <button className='del_btn' onClick={() => bos2(item.id)}>delete</button>
                                 </div>
