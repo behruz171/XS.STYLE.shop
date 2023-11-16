@@ -62,7 +62,9 @@ const Admincard = () => {
             }, duration);
         });
     }
-    priceVal();
+    setTimeout(function () {
+        priceVal();
+    }, 1);
     return (
         <div>
             <nav>
