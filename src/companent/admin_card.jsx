@@ -45,10 +45,10 @@ const Admincard = () => {
         localStorage.setItem('data', '')
         window.location.reload()
     }
-    let valuesDisplays = document.querySelectorAll('.num');
-    let interval = 2000
 
-    function priceVal() {
+    let priceVal = () => {
+        let valuesDisplays = document.querySelectorAll('.num');
+        let interval = 2000
         valuesDisplays.forEach((valuesDisplay) => {
             let startValue = 0;
             let endValue = parseInt(valuesDisplay.getAttribute("data-val"));
@@ -64,7 +64,7 @@ const Admincard = () => {
     }
     setTimeout(function () {
         priceVal();
-    }, 0);
+    }, 2000);
     return (
         <div>
             <nav>
